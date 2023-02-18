@@ -12,6 +12,8 @@ public record AddresDTO(
         @Pattern(regexp = "\\d{8}")
         String zipcode,
         @NotBlank
+        String city,
+        @NotBlank
         String state,
         String complement,
         String number
