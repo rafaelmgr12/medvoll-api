@@ -1,5 +1,6 @@
 package com.rafaelmgr12.medvollapi.entity;
 
+import com.rafaelmgr12.medvollapi.dto.AddresDTO;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,4 +22,13 @@ public class Address {
     private String city;
     private String state;
 
+    public Address(AddresDTO address) {
+        this.street = address.street();
+        this.neighborhood = address.neighborhood();
+        this.number = address.number();
+        this.complement = address.complement();
+        this.zipcode = address.zipcode();
+        this.city = address.city();
+        this.state = address.state();
+    }
 }
