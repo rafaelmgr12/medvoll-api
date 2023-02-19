@@ -3,7 +3,7 @@ package com.rafaelmgr12.medvollapi.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record AddresDTO(
+public record AddressDTO(
         @NotBlank
         String street,
         @NotBlank

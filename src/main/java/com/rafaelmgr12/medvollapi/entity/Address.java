@@ -1,6 +1,6 @@
 package com.rafaelmgr12.medvollapi.entity;
 
-import com.rafaelmgr12.medvollapi.dto.AddresDTO;
+import com.rafaelmgr12.medvollapi.dto.AddressDTO;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +22,7 @@ public class Address {
     private String city;
     private String state;
 
-    public Address(AddresDTO address) {
+    public Address(AddressDTO address) {
         this.street = address.street();
         this.neighborhood = address.neighborhood();
         this.number = address.number();
