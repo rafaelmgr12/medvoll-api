@@ -19,12 +19,16 @@ public class Doctor {
     private String email;
     private String phone;
     private String crm;
+
+    private Boolean active;
+
     @Enumerated(EnumType.STRING)
     private Speciality speciality;
     @Embedded
     private Address address;
 
     public Doctor(RegisterDoctorDTO dto) {
+        this.active = true;
         this.name = dto.name();
         this.email = dto.email();
         this.phone = dto.phone();
@@ -46,5 +50,9 @@ public class Doctor {
         if (dto.address() != null) {
             this.address.updateData(dto.address());
         }
+    }
+
+    public void delete() {
+        this.active = false;
     }
 }
