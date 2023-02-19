@@ -1,6 +1,7 @@
 package com.rafaelmgr12.medvollapi.entity;
 
 import com.rafaelmgr12.medvollapi.dto.RegisterDoctorDTO;
+import com.rafaelmgr12.medvollapi.dto.UpdataeDoctorsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,5 +31,20 @@ public class Doctor {
         this.crm = dto.crm();
         this.speciality = dto.speciality();
         this.address = new Address(dto.address());
+    }
+
+    public void updateData(UpdataeDoctorsDTO dto) {
+        if (dto.name() != null) {
+            this.name = dto.name();
+        }
+        if (dto.email() != null) {
+            this.email = dto.email();
+        }
+        if (dto.phone() != null) {
+            this.phone = dto.phone();
+        }
+        if (dto.address() != null) {
+            this.address.updateData(dto.address());
+        }
     }
 }
