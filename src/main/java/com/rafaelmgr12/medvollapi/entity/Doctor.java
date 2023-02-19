@@ -16,6 +16,7 @@ public class Doctor {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     private String crm;
     @Enumerated(EnumType.STRING)
     private Speciality speciality;
@@ -25,6 +26,7 @@ public class Doctor {
     public Doctor(RegisterDoctorDTO dto) {
         this.name = dto.name();
         this.email = dto.email();
+        this.phone = dto.phone();
         this.crm = dto.crm();
         this.speciality = dto.speciality();
         this.address = new Address(dto.address());
