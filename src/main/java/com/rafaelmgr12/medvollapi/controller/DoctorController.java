@@ -1,9 +1,6 @@
 package com.rafaelmgr12.medvollapi.controller;
 
-import com.rafaelmgr12.medvollapi.dto.ListDataDoctorDTO;
-import com.rafaelmgr12.medvollapi.dto.RegisterDoctorDTO;
-import com.rafaelmgr12.medvollapi.dto.UpdataeDoctorsDTO;
-import com.rafaelmgr12.medvollapi.dto.DetailsDoctorDTO;
+import com.rafaelmgr12.medvollapi.dto.*;
 import com.rafaelmgr12.medvollapi.entity.Doctor;
 import com.rafaelmgr12.medvollapi.repository.DoctorRepository;
 import jakarta.transaction.Transactional;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/medicos")
@@ -26,7 +24,7 @@ public class DoctorController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity register(@RequestBody RegisterDoctorDTO dto, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DetailsDoctorDTO> register(@RequestBody RegisterDoctorDTO dto, UriComponentsBuilder uriBuilder) {
         Doctor doc = new Doctor(dto);
         repository.save(doc);
 
@@ -42,7 +40,7 @@ public class DoctorController {
     }
     @PutMapping
     @Transactional
-    public ResponseEntity update(@RequestBody UpdataeDoctorsDTO dto) {
+    public ResponseEntity<DetailsDoctorDTO> update(@RequestBody UpdataeDoctorsDTO dto) {
         Doctor doctor = repository.getReferenceById(dto.id());
         doctor.updateData(dto);
 
@@ -52,11 +50,22 @@ public class DoctorController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity delete(@PathVariable Long id) {
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
         Doctor doctor = repository.getReferenceById(id);
         doctor.delete();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DetailsDoctorDTO> detail(@PathVariable Long id){
+        Optional<Doctor> doc = repository.findByIdAndActiveIsTrue(id);
+        if (doc.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        else {
+            return ResponseEntity.ok(new DetailsDoctorDTO(doc.get()));
+        }
     }
 
 }
