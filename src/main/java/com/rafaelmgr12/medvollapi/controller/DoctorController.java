@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/medicos")
@@ -62,13 +61,9 @@ public class DoctorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<DetailsDoctorDTO> detail(@PathVariable Long id){
-        Optional<Doctor> doc = repository.findByIdAndActiveIsTrue(id);
-        if (doc.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        else {
-            return ResponseEntity.ok(new DetailsDoctorDTO(doc.get()));
-        }
+        Doctor doc = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DetailsDoctorDTO(doc));
+
     }
 
 }
