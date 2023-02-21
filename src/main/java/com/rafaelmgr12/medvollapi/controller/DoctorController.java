@@ -1,8 +1,11 @@
 package com.rafaelmgr12.medvollapi.controller;
 
-import com.rafaelmgr12.medvollapi.dto.*;
-import com.rafaelmgr12.medvollapi.entity.Doctor;
-import com.rafaelmgr12.medvollapi.repository.DoctorRepository;
+import com.rafaelmgr12.medvollapi.domain.doctors.DetailsDoctorDTO;
+import com.rafaelmgr12.medvollapi.domain.doctors.ListDataDoctorDTO;
+import com.rafaelmgr12.medvollapi.domain.doctors.RegisterDoctorDTO;
+import com.rafaelmgr12.medvollapi.domain.doctors.UpdataeDoctorsDTO;
+import com.rafaelmgr12.medvollapi.domain.doctors.Doctor;
+import com.rafaelmgr12.medvollapi.domain.doctors.DoctorRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

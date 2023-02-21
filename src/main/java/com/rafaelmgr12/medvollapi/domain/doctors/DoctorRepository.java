@@ -1,6 +1,5 @@
-package com.rafaelmgr12.medvollapi.repository;
+package com.rafaelmgr12.medvollapi.domain.doctors;
 
-import com.rafaelmgr12.medvollapi.entity.Doctor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

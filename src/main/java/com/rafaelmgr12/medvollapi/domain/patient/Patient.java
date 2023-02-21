@@ -1,48 +1,43 @@
-package com.rafaelmgr12.medvollapi.entity;
+package com.rafaelmgr12.medvollapi.domain.patient;
 
-import com.rafaelmgr12.medvollapi.dto.RegisterDoctorDTO;
-import com.rafaelmgr12.medvollapi.dto.UpdataeDoctorsDTO;
+
+import com.rafaelmgr12.medvollapi.domain.address.Address;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "doctors")
-@Entity(name = "Doctor")
+@Table(name = "patients")
+@Entity(name = "Patient")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Doctor {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Patient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;
+
     private String phone;
-    private String crm;
+    private String cpf;
 
-    private Boolean active;
-
-    @Enumerated(EnumType.STRING)
-    private Speciality speciality;
     @Embedded
     private Address address;
+    private Boolean active;
 
-    public Doctor(RegisterDoctorDTO dto) {
+    public Patient(RegisterPatientDTO dto) {
         this.active = true;
         this.name = dto.name();
         this.email = dto.email();
         this.phone = dto.phone();
-        this.crm = dto.crm();
-        this.speciality = dto.speciality();
+        this.cpf = dto.cpf();
         this.address = new Address(dto.address());
     }
 
-    public void updateData(UpdataeDoctorsDTO dto) {
+    public void  updateData(UpdatePatientDTO dto) {
         if (dto.name() != null) {
             this.name = dto.name();
-        }
-        if (dto.email() != null) {
-            this.email = dto.email();
         }
         if (dto.phone() != null) {
             this.phone = dto.phone();
@@ -51,6 +46,7 @@ public class Doctor {
             this.address.updateData(dto.address());
         }
     }
+
 
     public void delete() {
         this.active = false;

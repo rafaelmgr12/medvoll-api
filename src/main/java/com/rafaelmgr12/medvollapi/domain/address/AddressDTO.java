@@ -1,4 +1,4 @@
-package com.rafaelmgr12.medvollapi.dto;
+package com.rafaelmgr12.medvollapi.domain.address;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

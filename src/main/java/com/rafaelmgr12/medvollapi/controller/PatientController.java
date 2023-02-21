@@ -1,12 +1,10 @@
 package com.rafaelmgr12.medvollapi.controller;
 
-import com.rafaelmgr12.medvollapi.dto.DetailsDoctorDTO;
-import com.rafaelmgr12.medvollapi.dto.DetailsPatientDTO;
-import com.rafaelmgr12.medvollapi.dto.RegisterPatientDTO;
-import com.rafaelmgr12.medvollapi.entity.Patient;
-import com.rafaelmgr12.medvollapi.repository.PatientRepository;
+import com.rafaelmgr12.medvollapi.domain.patient.DetailsPatientDTO;
+import com.rafaelmgr12.medvollapi.domain.patient.RegisterPatientDTO;
+import com.rafaelmgr12.medvollapi.domain.patient.Patient;
+import com.rafaelmgr12.medvollapi.domain.patient.PatientRepository;
 import jakarta.transaction.Transactional;
-import jdk.javadoc.doclet.Reporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +24,7 @@ public class PatientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity register(@RequestBody RegisterPatientDTO dto, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DetailsPatientDTO> register(@RequestBody RegisterPatientDTO dto, UriComponentsBuilder uriBuilder) {
         Patient patient = new Patient(dto);
         repository.save(patient);
 

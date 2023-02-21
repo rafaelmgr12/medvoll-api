@@ -1,6 +1,5 @@
-package com.rafaelmgr12.medvollapi.entity;
+package com.rafaelmgr12.medvollapi.domain.address;
 
-import com.rafaelmgr12.medvollapi.dto.AddressDTO;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,8 +1,6 @@
-package com.rafaelmgr12.medvollapi.dto;
+package com.rafaelmgr12.medvollapi.domain.doctors;
 
-import com.rafaelmgr12.medvollapi.entity.Address;
-import com.rafaelmgr12.medvollapi.entity.Doctor;
-import com.rafaelmgr12.medvollapi.entity.Speciality;
+import com.rafaelmgr12.medvollapi.domain.address.Address;
 
 public record DetailsDoctorDTO(
         Long id,
