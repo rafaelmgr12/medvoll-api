@@ -8,7 +8,6 @@ import com.rafaelmgr12.medvollapi.infra.execption.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 
 @Service
 public class ScheduleAppointment {
