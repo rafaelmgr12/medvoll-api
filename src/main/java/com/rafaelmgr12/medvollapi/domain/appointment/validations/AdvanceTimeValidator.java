@@ -2,10 +2,12 @@ package com.rafaelmgr12.medvollapi.domain.appointment.validations;
 
 import com.rafaelmgr12.medvollapi.domain.appointment.DataSchedulingConsultationDTO;
 import com.rafaelmgr12.medvollapi.infra.execption.ValidationException;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+@Component
 public class AdvanceTimeValidator implements AppointmentSchedulingValidator{
 
     @Override
