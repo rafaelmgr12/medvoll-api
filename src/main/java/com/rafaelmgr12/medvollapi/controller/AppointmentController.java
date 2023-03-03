@@ -3,6 +3,7 @@ package com.rafaelmgr12.medvollapi.controller;
 import com.rafaelmgr12.medvollapi.domain.appointment.AppointmentDetailDTO;
 import com.rafaelmgr12.medvollapi.domain.appointment.DataSchedulingConsultationDTO;
 import com.rafaelmgr12.medvollapi.domain.appointment.ScheduleAppointment;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/consultas")
+@SecurityRequirement(name = "bearer-key")
+
 public class AppointmentController {
 
     @Autowired

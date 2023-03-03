@@ -4,6 +4,7 @@ import com.rafaelmgr12.medvollapi.domain.patient.DetailsPatientDTO;
 import com.rafaelmgr12.medvollapi.domain.patient.RegisterPatientDTO;
 import com.rafaelmgr12.medvollapi.domain.patient.Patient;
 import com.rafaelmgr12.medvollapi.domain.patient.PatientRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/pacientes")
+@SecurityRequirement(name = "bearer-key")
 public class PatientController {
 
     @Autowired

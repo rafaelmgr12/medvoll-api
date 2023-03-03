@@ -6,6 +6,7 @@ import com.rafaelmgr12.medvollapi.domain.doctors.RegisterDoctorDTO;
 import com.rafaelmgr12.medvollapi.domain.doctors.UpdataeDoctorsDTO;
 import com.rafaelmgr12.medvollapi.domain.doctors.Doctor;
 import com.rafaelmgr12.medvollapi.domain.doctors.DoctorRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/medicos")
+@SecurityRequirement(name = "bearer-key")
 public class DoctorController {
 
     @Autowired
