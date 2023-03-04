@@ -45,6 +45,20 @@ class DoctorRepositoryTest {
         assertThat(freeDoctor).isNull();
     }
 
+    @Test
+    @DisplayName("Deveria devolver medico quando ele estiver disponivel na data")
+    void chooseRandomDoctorFreeInDateScenario2(){
+        LocalDateTime nextMondayAt10 = LocalDate.now()
+                .with(TemporalAdjusters.next(DayOfWeek.MONDAY))
+                .atTime(10, 0);
+        Doctor doctor = registerDoctor("Medico", "medico@voll.med", "123456", Speciality.CARDIOLOGIA);
+
+        Doctor freeDoctor = doctorRepository.chooseRandomFreeDoctorOnFreeDate(Speciality.CARDIOLOGIA, nextMondayAt10);
+
+        assertThat(freeDoctor).isEqualTo(doctor);
+
+    }
+
     private void registerAppointment(Doctor doctor, Patient patient, LocalDateTime dateTime) {
         Appointment appointment = new Appointment(null,doctor, patient, dateTime);
         em.persist(appointment);
